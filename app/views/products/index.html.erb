@@ -1,0 +1,12 @@
+<h1>Products (<%= @products.length %>)</h1>
+<%= link_to "Home", "/products" %>
+<%= link_to "New Product", "/products/new" %>
+<%= link_to "Edit Product", "/products/:id/edit" %>
+
+<%- @products.each do |product| %>
+	<p><%= product[:name] %>, 
+  	 <%= product[:description] %>, 
+		 <%= product[:price_in_cents] %>
+  </p>
+
+<% end %>

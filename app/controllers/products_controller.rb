@@ -1,6 +1,4 @@
-class Product < ActiveRecord::Base
-  attr_accessible :description, :name, :price_in_cents
-
+class ProductsController < ApplicationController
   def index
   	@products = Product.all
   end
@@ -36,6 +34,5 @@ class Product < ActiveRecord::Base
 				render :edit
 			end
 	end
-
 
 end
