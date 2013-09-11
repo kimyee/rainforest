@@ -1,13 +1,11 @@
 class ProductsController < ApplicationController
+  respond_to :html, :json
   # GET /products
   # GET /products.json
   def index
   	@products = Product.all
 
-  	respond_to do |format|
-  		format.html # index.html.erb
-  		format.json {render json: @products}
-  	end
+  	respond_with @products
   end
 
   # GET /products/1
@@ -15,10 +13,7 @@ class ProductsController < ApplicationController
   def show
   	@product = Product.find(params[:id]) 
 
-  	respond_to do |format|
-  		format.html # show.html.erb
-  		format.json {render json: @products}
-  	end
+  	respond_with @product
   end
 
   # GET /products/new
@@ -26,10 +21,7 @@ class ProductsController < ApplicationController
   def new
   	@product = Product.new #gives you a form to create
 
-  	respond_to do |format|
-  		format.html # new.html.erb
-  		format.json {render json: @products}
-  	end
+  	respond_with @product
   end 
 
   # POST /products
@@ -37,13 +29,12 @@ class ProductsController < ApplicationController
 	def create
 		@product = Product.new(params[:product])
 
-		respond_to do |format|
+		
 		if @product.save
-  		format.html { redirect_to @product, notice: 'Product was successfully created.' }
-  		format.json { render json: @product, status: :created, location: @product }
+				respond_with @product, location: @product, notice: "Yeay.", status: :created
 		else
-			format.html { render action: "new" }
-			format.json { render json: @product.errors, status: :unprocessable_entity }
+			respond_with @product do |format|
+				format.html { render action: "new" }
 			end
 		end
 	end
@@ -76,7 +67,7 @@ class ProductsController < ApplicationController
 		@product.destroy
 
 		respond_to do |format|
-			format.html { redirect_to prodcuts_url}
+			format.html { redirect_to products_url}
 			format.json { head :no_content}
 		end
 	end
