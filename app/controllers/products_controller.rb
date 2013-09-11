@@ -11,15 +11,15 @@ class ProductsController < ApplicationController
   	@product = Product.new #gives you a form to create
   end 
 
-	# def create
-	# 	@product = Product.new(params[:product])
+	def create
+		@product = Product.new(params[:product])
 
-	# 	if @product.save
-	# 		redirect_to products_url
-	# 	else
-	# 		render :new
-	# 	end
-	# end
+		if @product.save
+			redirect_to products_url
+		else
+			render :new
+		end
+	end
 	
 	# def edit
 	# 	@product = Product.find(params[:id]) #gives you a form to update 	
