@@ -1,31 +1,24 @@
 class ProductsController < ApplicationController
   respond_to :html, :json
-  # GET /products
-  # GET /products.json
+  
   def index
   	@products = Product.all
 
   	respond_with @products
   end
 
-  # GET /products/1
-  # GET /products/
   def show
   	@product = Product.find(params[:id]) 
 
   	respond_with @product
   end
 
-  # GET /products/new
-  # GET /products/new.json
   def new
   	@product = Product.new #gives you a form to create
 
   	respond_with @product
   end 
 
-  # POST /products
-  # POST /products.json
 	def create
 		@product = Product.new(params[:product])
 
@@ -39,13 +32,10 @@ class ProductsController < ApplicationController
 		end
 	end
 	
-	# GET /products/1/edit
 	def edit
 		@product = Product.find(params[:id]) #gives you a form to update 	
 	end 
 	
-	# PUT /products/1
-	# PUT /products/1.json
 	def update
 		@product = Product.find(params[:id])
 		
@@ -60,8 +50,6 @@ class ProductsController < ApplicationController
 		end
 	end
 
-	# DELETE /products/1
-	# DELETE /products/1.json
 	def destroy
 		@product = Product.find(params[:id])
 		@product.destroy
