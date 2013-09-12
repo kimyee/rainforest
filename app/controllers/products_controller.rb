@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+	before_filter :ensure_logged_in, :only => [:show]
   respond_to :html, :json
   
   def index
@@ -11,6 +12,9 @@ class ProductsController < ApplicationController
   	@product = Product.find(params[:id]) 
 
   	respond_with @product
+
+  	if current_user
+    @review = @product.reviews.build
   end
 
   def new
