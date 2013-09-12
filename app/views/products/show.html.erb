@@ -20,12 +20,12 @@
       <%= review.comment %>
       <br>
       <% if review.user != nil %>
-        <em> by <%= review.user.email %></em>
+        <em> by <%= review.user.name %></em>
         Added on: <%= review.created_at %>
       <% end %>
     </p>
   <% end %>
-  
+
 <h4>New Review</h4>
 
   <%= form_for([@product, @review]) do |f| %>

@@ -14,7 +14,8 @@ class ProductsController < ApplicationController
   	respond_with @product
 
   	if current_user
-    @review = @product.reviews.build
+    @review = @product.reviews
+  	end
   end
 
   def new
